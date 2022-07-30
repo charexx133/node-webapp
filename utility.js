@@ -2,7 +2,7 @@
 
 const request = require("request-promise");
 const EXTERNAL_API = "https://tools.ecpe.nu.ac.th/network/api/student/"; // put url
-const accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MTk5MDYxLCJleHAiOjE2NTkyMDI2NjEsIm5iZiI6MTY1OTE5OTA2MSwianRpIjoiNmFJQWN3ZzZxZVZsSUtMVSIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.HUGNXeAhY1KmMrv1V-Qcglb32NuSxU3-dGDhx_1jSIg"; // put access token
+const accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjAwMzYwLCJleHAiOjE2NTkyMDM5NjAsIm5iZiI6MTY1OTIwMDM2MCwianRpIjoieW9DeDVmdno5UzZqem9abyIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.xf95dfQQFRMBOEqNs98LkK6clommKe1ST2h8JcP7cs8"; // put access token
 const student = {
     name: '', // replace with your full name.
     age: 19, // put your age.
