@@ -2,7 +2,7 @@
 
 const request = require("request-promise");
 const EXTERNAL_API = "https://tools.ecpe.nu.ac.th/network/api/student/"; // put url
-const accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjAwMzYwLCJleHAiOjE2NTkyMDM5NjAsIm5iZiI6MTY1OTIwMDM2MCwianRpIjoieW9DeDVmdno5UzZqem9abyIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.xf95dfQQFRMBOEqNs98LkK6clommKe1ST2h8JcP7cs8"; // put access token
+const accessToken = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjAwODg1LCJleHAiOjE2NTkyMDQ0ODUsIm5iZiI6MTY1OTIwMDg4NSwianRpIjoid01KalZLTDFoRk5HWHBqNyIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.mva6eqSL7aF4X19i4hZ3fAEnDkp8o4Lw7gil0KCXCYs"; // put access token
 const student = {
     name: '', // replace with your full name.
     age: 19, // put your age.
@@ -17,7 +17,7 @@ exports.findStudentbyId = function(student_id, cb) {
         method: "GET",
         uri: EXTERNAL_API + student_id,
         headers: {
-            Authorization: Bearer ${accessToken}
+            Authorization: `Bearer ${accessToken}`
         }
     }).then((response) => {
         console.log('Sent');
