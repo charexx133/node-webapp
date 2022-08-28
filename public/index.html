@@ -62,6 +62,8 @@
     <!--put here-->
     <h1>Hello, Hoola</h1>
     <!---->
+
+
 </body>
 
 </html>
@@ -117,7 +119,7 @@
                 headers: {
                     'Content-Type': 'application/json',
                     "Accepts": "application/json",
-                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjAwODg1LCJleHAiOjE2NTkyMDQ0ODUsIm5iZiI6MTY1OTIwMDg4NSwianRpIjoid01KalZLTDFoRk5HWHBqNyIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.mva6eqSL7aF4X19i4hZ3fAEnDkp8o4Lw7gil0KCXCYs",
+                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzAzODEyLCJleHAiOjE2NjE3MDc0MTIsIm5iZiI6MTY2MTcwMzgxMiwianRpIjoiRGlZbTk4d2dlY0RWR29JaSIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.e3CSyl1rfK4CeH-SwCwkURpDgoOnrdXzZJzuAOhN4Fs",
                 },
                 success: function(data) {
                     console.log(data);
@@ -261,7 +263,7 @@
                     //elementButtonSave.setAttribute("class","tealA400");
 
 
-                    elementButtonSave.setAttribute("onclick", "studentInfo('" + items[i].fullname + "',this)");
+                    elementButtonSave.setAttribute("onclick", "confirmAlert('" + items[i].student_id + "',this)");
 
 
                     cell5.appendChild(elementButtonSave);
@@ -275,28 +277,27 @@
         myTableDiv.appendChild(table);
     }
 
-    function popupConfirm(fullname, objElement) {
-        alert(fullname);
-    function studentInfo(student_id){
-            // url from where we want to get the data
-            $.ajax({
-            method: "GET",
-            url: "https://tools.ecpe.nu.ac.th/network/api/student/"+student_id,
-            dataType : 'json',
-            headers: { 
-                'Content-Type': 'application/json',
-                "Accepts": "application/json",
-                "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjAwODg1LCJleHAiOjE2NTkyMDQ0ODUsIm5iZiI6MTY1OTIwMDg4NSwianRpIjoid01KalZLTDFoRk5HWHBqNyIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.mva6eqSL7aF4X19i4hZ3fAEnDkp8o4Lw7gil0KCXCYs`,
-            },
-            success: function(data){
-                console.log(data);
-                document.getElementById("name").innerHTML = "Name : "+data[0].fullname;
-                document.getElementById("student-id").innerHTML = "Student ID : "+data[0].student_id;
-                document.getElementById("gpa").innerHTML = "GPA : "+data[0].gpa;
-                document.getElementById("pos").innerHTML = "Position : "+data[0].position;
-                $("#tabs").tabs("option","active",2)
+    function confirmAlert(id){
+      //console.log(id);
+
+        $.ajax({
+        method: "GET",
+        url: "https://tools.ecpe.nu.ac.th/network/api/student/"+id,
+        dataType : 'json',
+        headers: { 
+            'Content-Type': 'application/json',
+            "Accepts": "application/json",
+            "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjYxNzAzODEyLCJleHAiOjE2NjE3MDc0MTIsIm5iZiI6MTY2MTcwMzgxMiwianRpIjoiRGlZbTk4d2dlY0RWR29JaSIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.e3CSyl1rfK4CeH-SwCwkURpDgoOnrdXzZJzuAOhN4Fs`,
+        },
+        success: function(data){
+            console.log(data);
+            document.getElementById("name").innerHTML = "Name : "+data[0].fullname;
+            document.getElementById("student-id").innerHTML = "Student ID : "+data[0].student_id;
+            document.getElementById("gpa").innerHTML = "GPA : "+data[0].gpa;
+            document.getElementById("pos").innerHTML = "Position : "+data[0].position;
+                
             }
             });
         } 
-    }
+    
 </script>
