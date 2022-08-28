@@ -8,6 +8,8 @@
     <title>First Page</title>
     <!--CSS-->
     <link rel="stylesheet" href="/jquery-ui/themes/base/jquery-ui.css">
+    <!--Tailwind CSS-->
+    <link rel="stylesheet" href="/styles/style.css"/>
 
     <!--Javascript-->
     <script src="/jquery/jquery.min.js"></script>
@@ -41,8 +43,20 @@
             <div id="myDynamicTable"></div>
         </div>
         <div id="tabs-3">
-
-        </div>
+            <div class="flex justify-center">
+              <div class="rounded-lg shadow-lg bg-white max-w-sm">
+                <a href="#!">
+                  <img class="rounded-t-lg" src="./images/1627732.png" alt=""/>
+                </a>
+                <div class="p-6">
+                  <h5 class="text-gray-900 text-xl font-medium mb-2" id="name"></h5>
+                  <p class="text-gray-700 text-base mb-4" id="student-id"></p>
+                  <p class="text-gray-700 text-base mb-4" id="gpa"></p>
+                  <p class="text-gray-700 text-base mb-4" id="pos"></p>
+                </div>
+              </div>
+            </div>
+          </div> 
     </div>
     <!-- tabs-->
     <!--put here-->
@@ -247,7 +261,7 @@
                     //elementButtonSave.setAttribute("class","tealA400");
 
 
-                    elementButtonSave.setAttribute("onclick", "popupConfirm('" + items[i].fullname + "',this)");
+                    elementButtonSave.setAttribute("onclick", "studentInfo('" + items[i].fullname + "',this)");
 
 
                     cell5.appendChild(elementButtonSave);
@@ -263,5 +277,26 @@
 
     function popupConfirm(fullname, objElement) {
         alert(fullname);
+    function studentInfo(student_id){
+            // url from where we want to get the data
+            $.ajax({
+            method: "GET",
+            url: "https://tools.ecpe.nu.ac.th/network/api/student/"+student_id,
+            dataType : 'json',
+            headers: { 
+                'Content-Type': 'application/json',
+                "Accepts": "application/json",
+                "Authorization": `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC90b29scy5lY3BlLm51LmFjLnRoXC9uZXR3b3JrXC9hcGlcL2xvZ2luIiwiaWF0IjoxNjU5MjAwODg1LCJleHAiOjE2NTkyMDQ0ODUsIm5iZiI6MTY1OTIwMDg4NSwianRpIjoid01KalZLTDFoRk5HWHBqNyIsInN1YiI6NTgsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.mva6eqSL7aF4X19i4hZ3fAEnDkp8o4Lw7gil0KCXCYs`,
+            },
+            success: function(data){
+                console.log(data);
+                document.getElementById("name").innerHTML = "Name : "+data[0].fullname;
+                document.getElementById("student-id").innerHTML = "Student ID : "+data[0].student_id;
+                document.getElementById("gpa").innerHTML = "GPA : "+data[0].gpa;
+                document.getElementById("pos").innerHTML = "Position : "+data[0].position;
+                $("#tabs").tabs("option","active",2)
+            }
+            });
+        } 
     }
 </script>
